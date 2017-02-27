@@ -1,0 +1,168 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.koweg.demo</groupId>
+    <artifactId>dailylog</artifactId>
+    <packaging>war</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>jersey-quickstart Jersey Webapp</name>
+
+
+    <properties>
+        <jersey.version>1.2</jersey.version>
+        <jackson.version>2.1.5</jackson.version>
+        <!-- <jackson.version>2.8.1</jackson.version> -->
+        <glassfish.version>3.1.1</glassfish.version>
+        <java.version>1.5</java.version>
+        <!-- <jaxrs.version>2.0.1</jaxrs.version> -->
+        <jaxrs.version>1.1.1</jaxrs.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+
+
+
+    <dependencies>
+
+        <!-- <dependency> -->
+        <!-- <groupId>com.sun.jersey</groupId> -->
+        <!-- <artifactId>jersey-servlet</artifactId> -->
+        <!-- <version>${jersey.version}</version> -->
+        <!-- </dependency> -->
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.jaxrs</groupId>
+            <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+
+        <!-- <dependency> -->
+        <!-- <groupId>javax.ws.rs</groupId> -->
+        <!-- <artifactId>javax.ws.rs-api</artifactId> -->
+        <!-- <version>${jaxrs.version}</version> -->
+        <!-- </dependency> -->
+        <dependency>
+            <groupId>javax.ws.rs</groupId>
+            <artifactId>jsr311-api</artifactId>
+            <version>${jaxrs.version}</version>
+        </dependency>
+
+
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-client</artifactId>
+            <version>${jersey.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- <dependency> -->
+        <!-- <groupId>org.glassfish.extras</groupId> -->
+        <!-- <artifactId>glassfish-embedded-web</artifactId> -->
+        <!-- <version>${glassfish.version}</version> -->
+        <!-- <scope>test</scope> -->
+        <!-- </dependency> -->
+    </dependencies>
+
+
+
+
+
+    <build>
+        <finalName>dailylog</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <compilerArgument>-Werror</compilerArgument>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>1.4.1</version>
+                <executions>
+                    <execution>
+                        <id>enforce-versions</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>${java.version}</version>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Run the application using "mvn embedded-glassfish:run" -->
+            <!-- <plugin> -->
+            <!-- <groupId>org.glassfish</groupId> -->
+            <!-- <artifactId>maven-embedded-glassfish-plugin</artifactId> -->
+            <!-- <version>${glassfish.version}</version> -->
+            <!-- <configuration> -->
+            <!-- <goalPrefix>embedded-glassfish</goalPrefix> -->
+            <!-- <app>/home/larinde/tmp/target/${project.build.finalName}.war</app> -->
+            <!-- <autoDelete>true</autoDelete> -->
+            <!-- <port>8080</port> -->
+            <!-- </configuration> -->
+            <!-- <dependencies> -->
+            <!-- <dependency> -->
+            <!-- <groupId>com.sun.jersey</groupId> -->
+            <!-- <artifactId>jersey-servlet</artifactId> -->
+            <!-- <version>${project.version}</version> -->
+            <!-- </dependency> -->
+            <!-- <dependency> -->
+            <!-- <groupId>javax.servlet</groupId> -->
+            <!-- <artifactId>javax.servlet-api</artifactId> -->
+            <!-- <version>3.0.1</version> -->
+            <!-- </dependency> -->
+            <!-- </dependencies> -->
+            <!-- </plugin> -->
+        </plugins>
+    </build>
+
+
+
+
+
+</project>

@@ -1,0 +1,16 @@
+{
+  "eventlogs":[
+	  {
+	    "id": 13,
+	    "eventType": "meeting",
+	    "eventDate": "2017-01-31T28:28:56.782Z",
+	    "comment": "London English-Portuguese Language Exchange Meetup"
+	  },
+	  {
+	    "id": 17,
+	    "eventType": "idea",
+	    "eventDate": "2017-02-27T28:28:56.782Z",
+	    "comment": "Buy a property in Gambia"
+	  }
+  ]
+}
