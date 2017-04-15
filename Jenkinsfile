@@ -9,6 +9,8 @@ node {
       // MAVEN_HOME configured in global configuration - http://localhost:8080/jenkins/configureTools/
       mavenHome = tool 'maven'
       javaHome = tool 'jdk1.8.0'
+      echo "initialising $javaHome"
+      echo "initialising $mavenHome"
    }
 
    stage('Build') {
