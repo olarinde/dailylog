@@ -1,22 +1,24 @@
 node {
 
-   def mvnHome
-   def java
+   def mavenHome
+   def javaHome
 
    stage('Prebuild') {
       // pull code from repo
       git 'https://github.com/olarinde/dailylog.git'
       // MAVEN_HOME configured in global configuration - http://localhost:8080/jenkins/configureTools/
-      mvnHome = tool 'maven'
-      java = tool 'jdk1.8.0'
-      echo ""
+      mavenHome = tool 'maven'
+      javaHome = tool 'jdk1.8.0'
    }
 
    stage('Build') {
-      if (isUnix()) {
-         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
-      } else {
-         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+      withEnv(["JAVA_HOME=$javaHome",
+               "PATH+MAVEN=$mavenHome/bin:${env.JAVA_HOME}/bin"]){
+	      if (isUnix()) {
+	         sh "'${mavenHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+	      } else {
+	         bat(/"${mavenHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+	      }
       }
    }
 
