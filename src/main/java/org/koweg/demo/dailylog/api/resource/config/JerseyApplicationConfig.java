@@ -1,10 +1,7 @@
 package org.koweg.demo.dailylog.api.resource.config;
 
-import java.util.Set;
-
 import javax.ws.rs.core.Configurable;
 
-import org.koweg.demo.dailylog.api.resource.impl.RegistrationsResourceImpl;
 import org.koweg.demo.resources.impl.DailyLogsResourceImpl;
 import org.koweg.demo.rest.BaseJerseyApplicationConfig;
 
@@ -21,7 +18,6 @@ public class JerseyApplicationConfig extends BaseJerseyApplicationConfig {
         super.registerResources(config);
         // config.register(RegistrationsResourceImpl.class);
         // config.register(DailyLogsResourceImpl.class);
-        register(RegistrationsResourceImpl.class);
         register(DailyLogsResourceImpl.class);
         // packages(true, "org.koweg.demo.dailylog.api.resource");
     }

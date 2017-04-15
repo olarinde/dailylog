@@ -27,7 +27,7 @@ public class BaseJerseyApplicationConfig extends ResourceConfig {
         // config.register(JacksonConfig.class);
         // config.register(JaxbConfig.class);
         
-        config.register(ValidationConfigurationContextResolver.class);
+//        config.register(ValidationConfigurationContextResolver.class);
 
         registerResources(config);
 
