@@ -1,21 +1,34 @@
 package org.koweg.demo.resources.impl;
 
-import java.io.File;
 import java.io.InputStream;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.ResponseBuilder;
+
+import org.koweg.demo.dailylog.api.ApplicationInfo;
+import org.koweg.demo.dailylog.api.ApplicationInfo.Builder;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Path("/dailylogs")
 public class DailyLogsResourceImpl {
 
+    private static final ObjectMapper mapper = new ObjectMapper();
     @GET
-    @Produces("text/plain")
+    @Produces(MediaType.APPLICATION_JSON)
     public String dailyLogs() {
-        return "Daily Logs. Work in progress.....";
+        ApplicationInfo applicationInfo = new ApplicationInfo("Daily Logs", "1.0.0", "ACTIVE");
+        String result = null;
+        try {
+            result = mapper.writeValueAsString(applicationInfo).toString();
+        } catch (JsonProcessingException e) {
+        }
+        return result;
     }
 
     @GET

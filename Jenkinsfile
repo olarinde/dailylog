@@ -4,14 +4,14 @@ node {
    // MAVEN_HOME configured in global configuration - http://localhost:8080/jenkins/configureTools/
    def mavenHome = tool 'maven'
 
-   stage('Prebuild') {
+   stage('Checkout') {
       echo "initialising $javaHome"
       echo "initialising $mavenHome"
+      // pull code from repo
+      git 'https://github.com/olarinde/dailylog.git'
    }
 
    stage('Build') {
-      // pull code from repo
-      git 'https://github.com/olarinde/dailylog.git'
       
       withEnv(["PATH+MAVEN=${mavenHome}/bin"]) {
         sh 'mvn -Dmaven.test.failure.ignore clean package'
